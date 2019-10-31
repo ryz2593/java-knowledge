@@ -11,3 +11,11 @@ AOP是面向切面的编程，其思想是把散布于不同业务但功能相�
 Spring框架提供了@AspectJ注解方法和基于XML架构的方法来实现AOP.
 
 ###Bean的生命周期
+
+1. bean对象的实例化---也就是我们常说的new
+
+2. 按照spring上下文对实例化的bean进行配置---也就是IOC注入
+
+3. 如果这个bean已经实现了BeanNameAware接口，会调用它实现的setBeanName(String)方法，此处传递的就是spring配置文件中的bean的id
+
+4. 
