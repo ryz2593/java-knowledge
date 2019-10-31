@@ -21,3 +21,5 @@ Spring框架提供了@AspectJ注解方法和基于XML架构的方法来实现AOP
 4. 如果这个bean已经实现了BeanFactoryAware接口，会调用它实现的setBeanFactory(beanFactory)传递的是spring工厂自身（可以用这个方式来获取其他bean，只需在spring配置文件中配置一个普通的Bean就可以）
 
 5. 如果这个bean已经实现了ApplicationContextAware接口，会调用setApplicationContext(ApplicationContext)方法，传入spring上下文(同样这个方式也可以实现步骤4的内容，但比4更好，因为ApplicationContext是BeanFactory的子接口，有更多的实现方法)
+
+6. 
