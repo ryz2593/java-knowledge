@@ -22,4 +22,15 @@ Spring框架提供了@AspectJ注解方法和基于XML架构的方法来实现AOP
 
 5. 如果这个bean已经实现了ApplicationContextAware接口，会调用setApplicationContext(ApplicationContext)方法，传入spring上下文(同样这个方式也可以实现步骤4的内容，但比4更好，因为ApplicationContext是BeanFactory的子接口，有更多的实现方法)
 
-6. 
+6. 如果这个bean关联了BeanPostProcessor接口，将会调用postProcessBeforeInitialization(Object obj, String s)方法，BeanProcessor经常被用作Bean内容的更改，并且由于这个是在Bean初始化结束时调用的那个方法，也可以被应用于内存或缓存技术
+
+7. 如果Bean在spring配置文件中配置了init-method属性会自动调用其配置的初始化方法
+
+8、如果这个Bean关联了BeanPostProcessor接口，将会调用postProcessAfterInitialization(Object obj, String s)方法、；
+
+注：以上工作完成以后就可以应用这个Bean了，那这个Bean是一个Singleton的，所以一般情况下我们调用同一个id的Bean会是在内容地址相同的实例，当然在Spring配置文件中也可以配置非Singleton，这里我们不做赘述。
+
+9、当Bean不再需要时，会经过清理阶段，如果Bean实现了DisposableBean这个接口，会调用那个其实现的destroy()方法；
+
+10、最后，如果这个Bean的Spring配置中配置了destroy-method属性，会自动调用其配置的销毁方法。
+
