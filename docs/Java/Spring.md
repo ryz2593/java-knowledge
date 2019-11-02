@@ -66,3 +66,6 @@ ThreadLocal会为每一个线程提供一个独立的变量副本，从而隔离
 （4）模板模式：用来解决代码重复的问题，比如 RedisTemplate，JmsTemplate， JpaTemplate。
 
 （5）观察者模式：定义对象键一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都会得到通知被制动更新，如Spring中listener的实现--ApplicationListener。
+
+####Spring事务的实现方式和实现原理
+
