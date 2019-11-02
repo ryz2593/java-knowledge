@@ -46,3 +46,7 @@ Spring框架提供了@AspectJ注解方法和基于XML架构的方法来实现AOP
 
 （5）global-session:全局作用域
 
+
+####Spring如何处理线程并发问题
+
+
