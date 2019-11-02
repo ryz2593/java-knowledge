@@ -35,3 +35,11 @@ Spring框架提供了@AspectJ注解方法和基于XML架构的方法来实现AOP
 10、最后，如果这个Bean的Spring配置中配置了destroy-method属性，会自动调用其配置的销毁方法。
 
 ###Spring支持的几种Bean的作用域
+
+（1）Singleton:默认，每个容器中只有一个Bean的实例，单例模式由BeanFactory自身来维护
+
+（2）prototype：为每个bean请求提供一个实例
+
+（3）request:为每个网络请求创建一个实例，在请求完成以后，bean会失效并被垃圾回收器回收
+
+
