@@ -42,4 +42,6 @@ Spring框架提供了@AspectJ注解方法和基于XML架构的方法来实现AOP
 
 （3）request:为每个网络请求创建一个实例，在请求完成以后，bean会失效并被垃圾回收器回收
 
+（4）session：与request范围类似，确保每个会话中有一个bean的实例，在session过期后，bean会随之失效
 
+（5）global-session:
