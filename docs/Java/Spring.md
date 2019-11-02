@@ -1,4 +1,4 @@
-<h3>Spring Ioc</h3>
+<h2>Spring Ioc</h2>
 
 （1）Spring Ioc就是控制发转，是指创建对象的控制权的转移，以前创建对象的主动权和时机由我们自己把控的，而现在这种权利转移到spring容器中，并由容器根据配置文件去创建实例和管理各实例之间的依赖关系，对象和对象之间松散耦合，也利于功能的复用。DI依赖注入，和控制反转是同一个概念的不同角度的描述，即应用程序在运行时依赖Ioc容器来动态注入对象需要的外部资源。
 
@@ -6,36 +6,37 @@
 
 （3）Spring的Ioc的三种注入方式：构造器注入、setter方法注入、注解注入
 
-###AOP
+<h3>AOP</h3>
+
 AOP是面向切面的编程，其思想是把散布于不同业务但功能相同的代码从业务逻辑中抽取出来，封装成独立的模块，这些独立的模块被称为切面，切面的具体功能方法被称为关注点。在业务逻辑执行过程中，AOP会把分离出来的切面和关注点动态切入到业务流程中，这样做的好处是提高了代码的重用性和可维护性。
 
 Spring框架提供了@AspectJ注解方法和基于XML架构的方法来实现AOP.
 
-###Bean的生命周期
+<h3>Bean的生命周期</h3>
 
-1. bean对象的实例化---也就是我们常说的new
+> 1. bean对象的实例化---也就是我们常说的new
 
-2. 按照spring上下文对实例化的bean进行配置---也就是IOC注入
+> 2. 按照spring上下文对实例化的bean进行配置---也就是IOC注入
 
-3. 如果这个bean已经实现了BeanNameAware接口，会调用它实现的setBeanName(String)方法，此处传递的就是spring配置文件中的bean的id
+> 3. 如果这个bean已经实现了BeanNameAware接口，会调用它实现的setBeanName(String)方法，此处传递的就是spring配置文件中的bean的id
 
-4. 如果这个bean已经实现了BeanFactoryAware接口，会调用它实现的setBeanFactory(beanFactory)传递的是spring工厂自身（可以用这个方式来获取其他bean，只需在spring配置文件中配置一个普通的Bean就可以）
+> 4. 如果这个bean已经实现了BeanFactoryAware接口，会调用它实现的setBeanFactory(beanFactory)传递的是spring工厂自身（可以用这个方式来获取其他bean，只需在spring配置文件中配置一个普通的Bean就可以）
 
-5. 如果这个bean已经实现了ApplicationContextAware接口，会调用setApplicationContext(ApplicationContext)方法，传入spring上下文(同样这个方式也可以实现步骤4的内容，但比4更好，因为ApplicationContext是BeanFactory的子接口，有更多的实现方法)
+> 5. 如果这个bean已经实现了ApplicationContextAware接口，会调用setApplicationContext(ApplicationContext)方法，传入spring上下文(同样这个方式也可以实现步骤4的内容，但比4更好，因为ApplicationContext是BeanFactory的子接口，有更多的实现方法)
 
-6. 如果这个bean关联了BeanPostProcessor接口，将会调用postProcessBeforeInitialization(Object obj, String s)方法，BeanProcessor经常被用作Bean内容的更改，并且由于这个是在Bean初始化结束时调用的那个方法，也可以被应用于内存或缓存技术
+> 6. 如果这个bean关联了BeanPostProcessor接口，将会调用postProcessBeforeInitialization(Object obj, String s)方法，BeanProcessor经常被用作Bean内容的更改，并且由于这个是在Bean初始化结束时调用的那个方法，也可以被应用于内存或缓存技术
 
-7. 如果Bean在spring配置文件中配置了init-method属性会自动调用其配置的初始化方法
+> 7. 如果Bean在spring配置文件中配置了init-method属性会自动调用其配置的初始化方法
 
-8、如果这个Bean关联了BeanPostProcessor接口，将会调用postProcessAfterInitialization(Object obj, String s)方法、；
+> 8、如果这个Bean关联了BeanPostProcessor接口，将会调用postProcessAfterInitialization(Object obj, String s)方法、；
 
-注：以上工作完成以后就可以应用这个Bean了，那这个Bean是一个Singleton的，所以一般情况下我们调用同一个id的Bean会是在内容地址相同的实例，当然在Spring配置文件中也可以配置非Singleton，这里我们不做赘述。
+>> 注：以上工作完成以后就可以应用这个Bean了，那这个Bean是一个Singleton的，所以一般情况下我们调用同一个id的Bean会是在内容地址相同的实例，当然在Spring配置文件中也可以配置非Singleton，这里我们不做赘述。
 
-9、当Bean不再需要时，会经过清理阶段，如果Bean实现了DisposableBean这个接口，会调用那个其实现的destroy()方法；
+> 9、当Bean不再需要时，会经过清理阶段，如果Bean实现了DisposableBean这个接口，会调用那个其实现的destroy()方法；
 
-10、最后，如果这个Bean的Spring配置中配置了destroy-method属性，会自动调用其配置的销毁方法。
+> 10、最后，如果这个Bean的Spring配置中配置了destroy-method属性，会自动调用其配置的销毁方法。
 
-###Spring支持的几种Bean的作用域
+<h3>Spring支持的几种Bean的作用域</h3>
 
 （1）Singleton:默认，每个容器中只有一个Bean的实例，单例模式由BeanFactory自身来维护
 
@@ -48,7 +49,7 @@ Spring框架提供了@AspectJ注解方法和基于XML架构的方法来实现AOP
 （5）global-session:全局作用域
 
 
-####Spring如何处理线程并发问题
+<h3>Spring如何处理线程并发问题</h3>
 
 在一般情况下，只有无状态的Bean才可以在多线程环境下共享，在Spring中，绝大部分Bean都可以声明为singleton作用域，因为Spring在对一些Bean中非线程安全状态采用ThreadLocal进行处理，解决线程安全问题。
 
@@ -56,7 +57,7 @@ ThreadLocal和线程同步机制都是为了解决多线程中相同变量的访
 
 ThreadLocal会为每一个线程提供一个独立的变量副本，从而隔离了多个线程对数据的访问冲突。应为每一个线程都拥有自己的变量副本，从而也就没有必要对该变量进行同步了。ThreadLocal提供了线程安全的共享对象，在编写多线程代码时，可以把不安全的变量封装进ThreadLocal。
 
-####Spring框架中都用到了那些设计模式
+<h3>Spring框架中都用到了那些设计模式</h3>
 
 （1）工厂模式：BeanFactory就是简单工厂模式的体现，用来创建对象的实例；
 
@@ -68,7 +69,7 @@ ThreadLocal会为每一个线程提供一个独立的变量副本，从而隔离
 
 （5）观察者模式：定义对象键一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都会得到通知被制动更新，如Spring中listener的实现--ApplicationListener。
 
-###Spring事务的实现方式和实现原理
+<h3>Spring事务的实现方式和实现原理</h3>
 
 Spring事务的本质其实就是数据库对事务的支持，没有数据库的事务支持，spring是无法提供事务功能的。真正的数据库层的失误提交和回滚是通过binlog或者redo log实现的。
 
