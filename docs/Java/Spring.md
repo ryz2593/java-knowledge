@@ -34,3 +34,4 @@ Spring框架提供了@AspectJ注解方法和基于XML架构的方法来实现AOP
 
 10、最后，如果这个Bean的Spring配置中配置了destroy-method属性，会自动调用其配置的销毁方法。
 
+###Spring支持的几种Bean的作用域
