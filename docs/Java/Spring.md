@@ -55,3 +55,14 @@ ThreadLocal和线程同步机制都是为了解决多线程中相同变量的访
 
 ThreadLocal会为每一个线程提供一个独立的变量副本，从而隔离了多个线程对数据的访问冲突。应为每一个线程都拥有自己的变量副本，从而也就没有必要对该变量进行同步了。ThreadLocal提供了线程安全的共享对象，在编写多线程代码时，可以把不安全的变量封装进ThreadLocal。
 
+####Spring框架中都用到了那些设计模式
+
+（1）工厂模式：BeanFactory就是简单工厂模式的体现，用来创建对象的实例；
+
+（2）单例模式：Bean默认为单例模式。
+
+（3）代理模式：Spring的AOP功能用到了JDK的动态代理和CGLIB字节码生成技术；
+
+（4）模板模式：用来解决代码重复的问题，比如 RedisTemplate，JmsTemplate， JpaTemplate。
+
+（5）观察者模式：定义对象键一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都会得到通知被制动更新，如Spring中listener的实现--ApplicationListener。
