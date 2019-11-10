@@ -16,6 +16,7 @@
 **双重校验锁实现对象单例（线程安全）**
 
 ```java
+
 public class Singleton {
 
     private volatile static Singleton uniqueInstance;
