@@ -125,5 +125,9 @@ spring事务的传播行为说的是，当多个事务同时存在的时候，sp
 
 （4）切入点（Pointcut）:切入点是指我们要对那些Join Point进行拦截的定义。通过切入点表达式，指定拦截的方法，比如指定拦截add*、search*.
 
-（5）引入（Introduction）:
+（5）引入（Introduction）:声明额外的方法或者某个类型的字段，Spring允许引入新的接口（以及一个新的实现）到任何被代理的对象。例如，你可以使用一个引入来使bean实现isModified接口，以便简化缓存机制。
+
+（6）目标对象（Target Object）:被一个或者多个切面（aspect）所通知（advice）的对象。也有人把它叫做被通知（adviced）对象。既然Spring AOP是通过运行时代理实现的，这个对象永远是一个被代理（proxied）对象。
+
+(7)
 
