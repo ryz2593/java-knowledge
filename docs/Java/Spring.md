@@ -123,5 +123,7 @@ spring事务的传播行为说的是，当多个事务同时存在的时候，sp
 
 （3）通知（Advice）：在切面的某个特定的连接点（Join Point）上执行的动作。通知有各种类型，其中包括“around”，“before”，“after”等通知，许多AOP框架，包括Spring,都是以拦截器做通知模型，并维护一个以拦截点为中心的拦截器链。
 
+（4）切入点（Pointcut）:切入点是指我们要对那些Join Point进行拦截的定义。通过切入点表达式，指定拦截的方法，比如指定拦截add*、search*.
 
+（5）引入（Introduction）:
 
