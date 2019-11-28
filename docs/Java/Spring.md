@@ -18,7 +18,7 @@ Spring框架提供了@AspectJ注解方法和基于XML架构的方法来实现AOP
 
  2. 按照spring上下文对实例化的bean进行配置---也就是IOC注入
 
-> 3. 如果这个bean已经实现了BeanNameAware接口，会调用它实现的setBeanName(String)方法，此处传递的就是spring配置文件中的bean的id
+ 3. 如果这个bean已经实现了BeanNameAware接口，会调用它实现的setBeanName(String)方法，此处传递的就是spring配置文件中的bean的id
 
 > 4. 如果这个bean已经实现了BeanFactoryAware接口，会调用它实现的setBeanFactory(beanFactory)传递的是spring工厂自身（可以用这个方式来获取其他bean，只需在spring配置文件中配置一个普通的Bean就可以）
 
