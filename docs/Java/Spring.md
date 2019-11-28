@@ -14,9 +14,9 @@ Spring框架提供了@AspectJ注解方法和基于XML架构的方法来实现AOP
 
 <h3>Bean的生命周期</h3>
 
-> 1. bean对象的实例化---也就是我们常说的new
+ 1. bean对象的实例化---也就是我们常说的new
 
-> 2. 按照spring上下文对实例化的bean进行配置---也就是IOC注入
+ 2. 按照spring上下文对实例化的bean进行配置---也就是IOC注入
 
 > 3. 如果这个bean已经实现了BeanNameAware接口，会调用它实现的setBeanName(String)方法，此处传递的就是spring配置文件中的bean的id
 
