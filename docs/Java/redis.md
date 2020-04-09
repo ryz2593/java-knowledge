@@ -75,6 +75,51 @@ redis是一种key/value的内存数据库，项目里基本上都是用来做缓
 
     断开master与slave连接，选取一个slave作为master，将其他slave连接到新的master，并告知客户端新的服务器地址。
     
+哨兵的工作原理：
+
+阶段一：监控阶段
+
+    - 用于同步各个节点的信息
+        - 获取各个sentinel的状态（是否在线）
+        - 获取master的信息
+            - master属性
+                - runid
+                - role: master
+            - 各个slave的详细信息
+        - 获取所有slave的状态（根据master中的slave信息）
+            - slave属性
+                - runid
+                - role: slave
+                - master_host、master_port
+                - offset
+                ...                        
+阶段二：通知阶段
+
+    sentinel1（也可能是其他的sentinel结点）会定时的去监测master、slave节点状态
+    然后在sentinel形成的圈子里面传播这个信息，各个sentinel节点之间会进行消息共享
+
+阶段三：故障转移阶段
+    
+    sentinel1会去向master定期发送hello，看master是否正常，如果master一直么有相应（设置的时间默认是30秒），sentinel1就会在sentinel所在的圈子里发送一条指令说master挂了，然后将master标记为sdonwn（主观下线）
+    其他的sentinel就回去尝试连接master，如果都认为（通常设置的是一半+1个）master已经下线了，就会将master标记为odown（客观下线）。
+    
+    一旦标记为客观下线就会清理队伍了
+    首先sentinel中会先投票选出一个sentinel来进行清理任务
+    被选出来的sentinel来进行一下工作
+    - 服务器列表中挑选备选master
+        - 在线的
+        - 响应慢的（不要）
+        - 与原master断开时间久的（不要）
+        - 优先原则
+            - 优先级
+            - offset（看那个slave结点同步的更多）
+            - runid （先启动的redis实例，runid会小一些，相当于优先选用最先启动的redis实例）
+    - 发送指令（sentinel）
+        - 向新的master发送slaveof no one
+        - 向其他的slave发送slaveof新masterIP端口
+                    
+    
+    
     
 
 
